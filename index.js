@@ -135,6 +135,7 @@ class Data {
   }
   active(key) {
     this.current = key
+    localStorage.setItem('current', key)
     csm.destroy()
     _editor.setValue(this.data[key])
   }
@@ -187,7 +188,6 @@ const addBtn = (name) => {
     inpName.value = span.textContent
     tab = span.textContent
     data.active(tab)
-    localStorage.setItem('current', tab)
   }
   button.onclick = (event) => {
     event.stopPropagation()
@@ -237,7 +237,7 @@ newBtn.onclick = () => {
       addBtn(value)
       current.classList.add('active')
       inpName.focus()
-      localStorage.setItem('current', tab)
+      data.active(tab)
     }
   }
 }
