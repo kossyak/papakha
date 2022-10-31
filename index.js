@@ -214,15 +214,13 @@ const addBtn = (name) => {
 
 const stories = data.getAll()
 if (stories) {
-  tab = localStorage.getItem('current')
-  if (!data.checkName(tab)) tab = 'mystory'
-  let index = 0
-  let i = 0
   for (const key in stories) {
     addBtn(key)
-    if (tab && tab === key) index = i
-    i++
+    tab = key
   }
+  const c = localStorage.getItem('current')
+  if(data.checkName(c)) tab = c
+  const index = Object.keys(stories).findIndex(s => s === tab)
   current = nav.children[index]
   current.classList.add('active')
   inpName.value = tab
