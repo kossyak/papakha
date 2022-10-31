@@ -54,7 +54,7 @@ const door = `const door = {
       permit: ['enter', 'table'],
       tabu: 'key',
       delete: 'trigger',
-      text: 'Вызять ключ'
+      text: 'Взять ключ'
     },
     exit: {
       permit: ['key', 'open', 'trigger'],
@@ -102,13 +102,13 @@ const _editor = CodeMirror(editor, {  // papakha
 class Data {
   constructor() {
     this.data = {
-      'myproject': '',
+      'mystory': '',
     }
     const data = localStorage.getItem('csm')
     if (data) {
       this.data = JSON.parse(data)
     }
-    this.current = 'myproject'
+    this.current = 'mystory'
     _editor.on('changes', () => this.update(this.current))
   }
   rename(old_key, new_key) {
@@ -187,6 +187,7 @@ const addBtn = (name) => {
     inpName.value = span.textContent
     tab = span.textContent
     data.active(tab)
+    localStorage.setItem('current', tab)
   }
   button.onclick = (event) => {
     event.stopPropagation()
@@ -211,18 +212,25 @@ const addBtn = (name) => {
   nav.appendChild(btn)
 }
 
-const mydata = data.getAll()
-if (mydata) {
-  for (const key in mydata) {
+const stories = data.getAll()
+if (stories) {
+  tab = localStorage.getItem('current')
+  if (!data.checkName(tab)) tab = 'mystory'
+  let index = 0
+  let i = 0
+  for (const key in stories) {
     addBtn(key)
-    tab = key
+    if (tab && tab === key) index = i
+    i++
   }
-  nav.lastElementChild.classList.add('active')
+  current = nav.children[index]
+  current.classList.add('active')
+  inpName.value = tab
   data.active(tab)
 }
 
 newBtn.onclick = () => {
-  if (nav.children.length <= 5) {
+  if (nav.children.length <= 10) {
     let value = Math.random().toString(16).slice(8)
     if(!data.checkName(value)) {
       data.create(value)
@@ -231,6 +239,7 @@ newBtn.onclick = () => {
       addBtn(value)
       current.classList.add('active')
       inpName.focus()
+      localStorage.setItem('current', tab)
     }
   }
 }
@@ -255,9 +264,10 @@ sampleBtn.onclick = () => {
       data.set(door)
     }
   }
+  root.classList.add('show')
 }
 group.onclick = () => nav.classList.toggle('full')
-bar.onclick = () => root.classList.toggle('hide')
+bar.onclick = () => root.classList.toggle('show')
 prompt.onclick = () => popup.classList.add('show')
 close.onclick = () => popup.classList.remove('show')
 
