@@ -58,7 +58,8 @@
 }
 
 .CodeMirror-lint-marker-error {
-  left: 10px;
+  top: 3px;
+  left: 5px;
   height: 10px;
   width: 10px;
   background-color: #c70000;
@@ -67,7 +68,8 @@
 .CodeMirror-lint-message-error {}
 
 .CodeMirror-lint-marker-warning {
-  left: 10px;
+  top: 3px;
+  left: 5px;
   height: 10px;
   width: 10px;
   background-color: #f18535;

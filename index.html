@@ -2,73 +2,62 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="icon" href="logo.svg">
+        <link rel="icon" href="icons/logo.svg">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="index.css" rel="stylesheet">
+        <link href="styles/console.css" rel="stylesheet">
+        <link href="styles/examples.css" rel="stylesheet">
+        <link href="styles/index.css" rel="stylesheet">
         <title>Context State Machine</title>
+<!--        <script src="https://cdn.jsdelivr.net/gh/kossyak/csmjs@main/bundlers/csm.min.js"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/lint/lint.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/lint/javascript-lint.min.js"></script>
         <script src="https://unpkg.com/jshint@2.13.2/dist/jshint.js"></script>
-        <link rel="stylesheet" href="codemirror.css" type="text/css"/>
-        <link rel="stylesheet" href="lint.css" type="text/css"/>
+        <link rel="stylesheet" href="styles/codemirror.css" type="text/css"/>
+        <link rel="stylesheet" href="styles/lint.css" type="text/css"/>
     </head>
     <body>
     <div class="popup">
-        <div class="close"><img src="remove.svg"></div>
-        <h2>permit</h2>
-        <p>Активирует состояние, только если все элементы присутствуют в контексте.</p>
-
-        <h2>pop</h2>
-        <p>Активирует состояние, только если все элементы присутствуют в контексте, и сразу удаляет их из контекста.</p>
-
-        <h2>tabu</h2>
-        <p>Запрещает активацию состояния, если хотя бы один элемент из списка есть в контексте.</p>
-
-        <h2>push</h2>
-        <p>Добавляет соответствующие элементы в контест.</p>
-
-        <h2>delete</h2>
-        <p>Удаляет соответствующие элементы из контекста.</p>
-
-        <h2>set</h2>
-        <p>Устанавливает новый контекст.</p>
-
-        <h2>text</h2>
-        <p>Текстовое описание состояния.</p>
-
-
-
-        <p> 🎓 Параметры каждого состояния, могут содержать один или несколько элементов. Если элементов несколько, то они должны передаваться в виде массива.</p>
-
-        <p> 🎓 При активации, каждое состояние добавляется в контекст, только если его там не было ранее.</p>
-
-    </div>
+        <div class="close"><img src="icons/remove.svg"></div>
+        <div></div>
+       </div>
     <div class="wrapper">
         <header>
             <div class="logo">
-                <img src="logo.svg">
+                <img src="icons/logo.svg">
             </div>
             <div class="buttons">
-                <button class="btn bar" title="bar"><img src="bar.svg"></button>
-                <button class="btn refresh" title="refresh"><img src="refresh.svg"></button>
-                <button class="btn prompt" title="prompt"><img src="prompt.svg"></button>
+                <button class="btn bar" title="bar"><img src="icons/bar.svg"></button>
+                <button class="btn refresh" title="refresh"><img src="icons/refresh.svg"></button>
+                <button class="btn prompt" title="prompt"><img src="icons/prompt.svg"></button>
             </div>
         </header>
         <div class="container">
             <div id="editor"></div>
-            <div id="root"></div>
+            <div id="root">
+                <div class="console">
+                    <button id="along"></button>
+                    <button id="across"></button>
+                    <button id="top"></button>
+                    <button id="right"></button>
+                    <button id="bottom"></button>
+                    <button id="left"></button>
+                    <table id="tiger"></table>
+                </div>
+                <div id="message"></div>
+                <div id="skeleton"></div>
+            </div>
         </div>
         <footer>
-            <button class="btn sample" title="sample">Пример</button>
-            <button class="new btn" title="add"><img src="add.svg"></button>
+            <button class="btn sample" title="sample">example</button>
+            <button class="new btn" title="add"><img src="icons/add.svg"></button>
             <div class="current"><input class="name" placeholder="rename" maxlength="12" ></div>
             <nav></nav>
-            <button class="group btn"><img src="group.svg"></button>
+            <button class="group btn"><img src="icons/group.svg"></button>
         </footer>
     </div>
-        <script type="module" src="index.js"></script>
-    <script id="script"></script>
+    <script type="module" src="scripts/modes/skeleton.js"></script>
+    <script type="module" src="scripts/index.js"></script>
     </body>
 </html>
