@@ -74,7 +74,7 @@ p {
   }
   change(arg) {
     const last = arg.context[arg.context.length - 1]
-    message.textContent = this.state[last].message
+    if (this.state[last]?.message) message.textContent = this.state[last].message
     const trigger = skeleton.shadowRoot.lastChild.querySelector(`[data-id="${arg.trigger}"]`)
     trigger && trigger.classList.add('blink')
     const timeoutID = setTimeout(() => {
