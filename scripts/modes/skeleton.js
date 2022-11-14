@@ -9,7 +9,7 @@ h1 {
     font-size: 34px;
     font-weight: normal;
     text-align: center;
-    margin: 60px 0 13px 0;
+    margin: 50px 0 13px 0;
     letter-spacing: -0.003em;
     text-transform: capitalize;
 }
@@ -54,6 +54,7 @@ p {
     skeleton.shadowRoot.lastChild.onclick = (event) => event.target.closest('p') && csm.action(event.target.dataset.id)
     this.state = {}
     this.contexView = []
+    this.setTimeoutId = null
   }
   render(actions) {
     skeleton.shadowRoot.children[3].textContent = this.contexView.join(' ')
@@ -71,10 +72,25 @@ p {
     skeleton.shadowRoot.children[2].textContent = 'Context State Machine'
     skeleton.shadowRoot.children[3].textContent = this.contexView.join(' ')
     skeleton.shadowRoot.lastChild.innerHTML = ''
+    message.textContent = ''
+  }
+  typeWriter(text) {
+    let i = 0
+    message.textContent = ''
+    const typeWriter = () => {
+      if (i < text.length) {
+        message.textContent += text.charAt(i)
+        i++
+        this.setTimeoutId = setTimeout(typeWriter, 50)
+      } else clearTimeout(this.setTimeoutId)
+    }
+    clearTimeout(this.setTimeoutId)
+    typeWriter()
+    
   }
   change(arg) {
     const last = arg.context[arg.context.length - 1]
-    if (this.state[last]?.message) message.textContent = this.state[last].message
+    if (this.state[last]?.message) this.typeWriter(this.state[last].message)
     const trigger = skeleton.shadowRoot.lastChild.querySelector(`[data-id="${arg.trigger}"]`)
     trigger && trigger.classList.add('blink')
     const timeoutID = setTimeout(() => {

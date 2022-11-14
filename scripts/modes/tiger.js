@@ -1,9 +1,9 @@
 export default class Game {
   constructor() {
-    this.map = document.querySelector('#tiger')
+    this.console = document.querySelector('#game')
+    this.map = {}
     this.sprite = {}
     this.events = {}
-    this.render()
     this.player()
     this.sheet = new CSSStyleSheet()
   }
@@ -17,7 +17,7 @@ export default class Game {
     for (let i = 0; i < count; i++) {
       this.sheet.deleteRule(0)
     }
-    this.render()
+    this.console.innerHTML = ''
   }
   random() {
     const min = 0
@@ -31,7 +31,13 @@ export default class Game {
     return () => clearInterval(intervalId)
   }
   render() {
-    this.map.innerHTML = ''
+    this.console.innerHTML = `<button id="along"></button>
+                    <button id="across"></button>
+                    <button id="top"></button>
+                    <button id="right"></button>
+                    <button id="bottom"></button>
+                    <button id="left"></button>
+                    <table id="tiger"></table>`
     for (let i=0; i<10; i++) {
       const tr = document.createElement('tr')
       for (let i=0; i<10; i++) {
@@ -41,6 +47,7 @@ export default class Game {
           td.classList.toggle('wall')
         }
       }
+      this.map = this.console.lastChild
       this.map.appendChild(tr)
     }
   }

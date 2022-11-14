@@ -99,7 +99,7 @@ const tiger = `const story = {
     }
   }
 }
-
+game.render()
 game.spawn('tiger', {
     y: 5,
     x: 0,
