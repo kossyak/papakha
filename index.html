@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <link rel="icon" href="icons/logo.svg">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="styles/console.css" rel="stylesheet">
+        <link href="styles/eden.css" rel="stylesheet">
         <link href="styles/examples.css" rel="stylesheet">
         <link href="styles/index.css" rel="stylesheet">
         <title>Context State Machine</title>
@@ -15,6 +15,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/lint/javascript-lint.min.js"></script>
         <script src="https://unpkg.com/jshint@2.13.2/dist/jshint.js"></script>
         <link rel="stylesheet" href="styles/codemirror.css" type="text/css"/>
+        <link rel="stylesheet" href="styles/themecode.css" type="text/css"/>
         <link rel="stylesheet" href="styles/lint.css" type="text/css"/>
     </head>
     <body>
@@ -36,20 +37,20 @@
         <div class="container">
             <div id="editor"></div>
             <div id="root">
-                <div class="console" id="game"></div>
+                <div id="edenContainer"></div>
+                <div id="csmContainer"></div>
                 <div id="message"></div>
-                <div id="skeleton"></div>
             </div>
         </div>
         <footer>
-            <button class="btn sample" title="sample">example</button>
+            <button class="btn sample" title="sample"><img src="icons/examples.svg"></button>
             <button class="new btn" title="add"><img src="icons/add.svg"></button>
             <div class="current"><input class="name" placeholder="rename" maxlength="12" ></div>
             <nav></nav>
             <button class="group btn"><img src="icons/group.svg"></button>
         </footer>
     </div>
-    <script type="module" src="scripts/modes/skeleton.js"></script>
+    <script type="module" src="scripts/modes/csmUI.js"></script>
     <script type="module" src="scripts/index.js"></script>
     </body>
 </html>

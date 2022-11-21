@@ -1,7 +1,7 @@
 import examples from '../examples.js'
 import Data from './editor.js'
 import exComponent from '../scripts/components/examples.js'
-
+import docsComponent from '../scripts/components/docs.js'
 
 const data = new Data()
 
@@ -19,7 +19,7 @@ const popup = document.querySelector('.popup')
 let current
 let tab
 
-const addBtn = (name) => {
+const create = (name) => {
   const btn = document.createElement('div')
   btn.classList.add('btn')
   current = btn
@@ -58,13 +58,31 @@ const addBtn = (name) => {
       }
     } else alert('Нельзя удалить единственный документ.')
   }
-  nav.appendChild(btn)
+  return btn
 }
+ const add = (code) => {
+   if (nav.children.length <= 10) {
+     let value = Math.random().toString(16).slice(8)
+     if(!data.checkName(value)) {
+       data.create(value)
+       inpName.value = tab = value
+       current && current.classList.remove('active')
+       const btn = create(value)
+       nav.insertAdjacentElement('afterbegin', btn)
+       current.classList.add('active')
+       inpName.focus()
+       data.active(tab)
+       if (code) data.set(code)
+     }
+   }
+ }
+
 
 const stories = data.getAll()
 if (stories) {
   for (const key in stories) {
-    addBtn(key)
+    const btn = create(key)
+    nav.appendChild(btn)
     tab = key
   }
   const c = localStorage.getItem('current')
@@ -76,20 +94,7 @@ if (stories) {
   data.active(tab)
 }
 
-newBtn.onclick = () => {
-  if (nav.children.length <= 10) {
-    let value = Math.random().toString(16).slice(8)
-    if(!data.checkName(value)) {
-      data.create(value)
-      inpName.value = tab = value
-      current && current.classList.remove('active')
-      addBtn(value)
-      current.classList.add('active')
-      inpName.focus()
-      data.active(tab)
-    }
-  }
-}
+newBtn.onclick = () => add()
 
 inpName.oninput = () => {
   inpName.value = inpName.value.replace(/[^a-z0-9]/gi,'')
@@ -108,22 +113,21 @@ sampleBtn.onclick = () => {
   popup.lastElementChild.onclick = (event) => {
     if (event.target.closest('button')) {
       const id = event.target.dataset.id
-      if(data.get(tab) === '') {
-        data.set(examples[id])
-      } else {
-        if (window.confirm('Документ не пустой. Вы уверены, что хотите заменить ваш код на образец?')) {
-          data.set(examples[id])
-        }
-      }
+      add(examples[id])
       popup.classList.remove('show')
     }
   }
   popup.classList.add('show')
   root.classList.add('show')
 }
+prompt.onclick = () => {
+  popup.lastElementChild.innerHTML = docsComponent.template
+  popup.classList.add('show')
+}
+
+
 group.onclick = () => nav.classList.toggle('full')
 bar.onclick = () => root.classList.toggle('show')
-prompt.onclick = () => popup.classList.add('show')
 close.onclick = () => popup.classList.remove('show')
 
 refresh.onclick = () => data.update(tab)

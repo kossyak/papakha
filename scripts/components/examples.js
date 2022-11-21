@@ -1,25 +1,29 @@
 export default {
   template: `
   <div class="ex-bns">
-    <div class="fx">
-      <button data-id="skeleton"></button data-id="skeleton">
+  <div class="popup-icon"><img src="icons/examples.svg"></div>
+    <div class="item">
+      <button data-id="skeleton" class="br5"></button>
       <div>
-        <h2>skeleton</h2>
-        <p>fdhdfhfdhfd</p>
+        <h2>Skeleton</h2>
+        <p>Создавайте свои текстовые игры без программирования, на основе простого принципа контекстной машины автоматов.</p>
+        <div class="links"><a href="">CSM</a></div>
       </div>
     </div>
-    <div class="fx">
-    <button data-id="flame"></button>
+    <div class="item">
+    <button data-id="flame"class="br5"></button>
       <div>
-        <h2>flame</h2>
-        <p>fdhdfhfdhfd</p>
+        <h2>Flame</h2>
+        <p>Создавайте свои текстовые игры без программирования, на основе простого принципа контекстной машины автоматов (csm).</p>
+        <div class="links"><a href="">CSM</a></div>
       </div>
     </div>
-    <div class="fx">
-      <button data-id="tiger"></button>
+    <div class="item">
+      <button data-id="tiger"class="br5"></button>
       <div>
-        <h2>tiger</h2>
-        <p>fdhdfhfdhfd</p>
+        <h2>Tiger</h2>
+        <p>Создавайте свои текстовые игры без программирования, на основе простого принципа контекстной машины автоматов (csm).</p>
+        <div class="links"><a href="">CSM</a><span>|</span><a href="">EDEN</a></div>
       </div>
     </div>
   </div>`

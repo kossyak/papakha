@@ -4,6 +4,7 @@ const _editor = CodeMirror(editor, {
   lineNumbers: true,
   lineWrapping: true,
   styleActiveLine: true,
+  readOnly: 'nocursor',
   gutters: ['CodeMirror-lint-markers'],
   lint: {
     esversion: 11,
@@ -16,11 +17,12 @@ const _editor = CodeMirror(editor, {
     statementIndent: 2
   }
 })
-import UI from './modes/skeleton.js'
-import Game from './modes/tiger.js'
 
-const ui = new UI(csm)
-const game = new Game()
+import csmUI from './modes/csmUI.js'
+import Eden from './modes/edem.js'
+
+const ui = new csmUI(csm)
+const eden = new Eden()
 
 export default class Data {
   constructor() {
@@ -52,15 +54,15 @@ export default class Data {
   update(key) {
     this.data[key] = _editor.getValue()
     localStorage.setItem('csm', JSON.stringify(this.data))
-    try {
-      skeleton.innerHTML = ''
-      game.destroy()
+    // try {
+      csmContainer.innerHTML = ''
+      eden.destroy()
       csm.off()
       csm.on('_create', (entry) => ui.create(entry))
       csm.on('_destroy', () => ui.destroy())
       csm.on('_change', (arg) => ui.change(arg))
-      new Function('csm', 'game', this.data[key])(csm, game)
-    } catch (err) {}
+      new Function('csm', 'eden', this.data[key])(csm, eden)
+    // } catch (err) {}
   }
   active(key) {
     this.current = key

@@ -86,53 +86,56 @@ const skeleton = `const story = {
 csm.create(story)`
 const tiger = `const story = {
   name: 'toggle',
-  description: '',
   context: 'down',
   state: {
     up: {
-      pop: 'down'
+      pop: 'down',
+      message: 'gfhfgjfgj'
     },
     down: {
-      pop: 'up'
+      pop: 'up',
+      message: 'gfhfdgdgfsdgjfgj'
     },
     stop: {
     }
   }
 }
-game.render()
-game.spawn('tiger', {
+eden.render()
+/*
+eden.build('wall', {
+  coords: [{y: 3, x: 3}, {y: 3, x: 3}],
+  color: 'gray'
+})
+*/
+eden.spawn('tiger', {
     y: 5,
     x: 0,
     color: 'orange'
 })
-game.spawn('meet', {
-    y: game.random(),
-    x: game.random(),
+eden.spawn('meet', {
+    y: eden.random(),
+    x: eden.random(),
     color: 'red'
 })
 csm.on('up', () => {
-  game.move('tiger', (y, x) => {
-  if (y === 0) return csm.action('down')
-   if (game.sprite.meet.y > y) {
+  eden.move('tiger', (y, x) => {
+  if (y === 0) csm.action('down')
+   if (eden.sprite.meet.y > y) {
       csm.action('down')
+    }
+    if (eden.sprite.meet.y === y) {
       return false
     }
-    if (game.sprite.meet.y === y) {
-      return false
-    }
-    console.log(game.has('wall', 3, 0))
+    console.log(eden.has('wall', 3, 0))
     return { y: y-1 }
   })
 })
 
 csm.on('down', () => {
-  game.move('tiger', (y, x) => {
-    if (y === 9) return csm.action('up')
-    if (game.sprite.meet.y < y) {
-      csm.action('up')
-      return false
-    }
-    if (game.sprite.meet.y === y) {
+  eden.move('tiger', (y, x) => {
+    if (y === 9) csm.action('up')
+    if (eden.sprite.meet.y < y) csm.action('up')
+    if (eden.sprite.meet.y === y) {
       return false
     }
     return { y: y+1 }

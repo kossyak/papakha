@@ -1,6 +1,6 @@
-export default class Game {
+export default class Eden {
   constructor() {
-    this.console = document.querySelector('#game')
+    this.container = edenContainer
     this.map = {}
     this.sprite = {}
     this.events = {}
@@ -17,11 +17,11 @@ export default class Game {
     for (let i = 0; i < count; i++) {
       this.sheet.deleteRule(0)
     }
-    this.console.innerHTML = ''
+    this.container.innerHTML = ''
   }
   random() {
     const min = 0
-    const max = 10
+    const max = 8
     return Math.floor(Math.random() * (max - min) ) + min
   }
   tick(callback) {
@@ -31,14 +31,14 @@ export default class Game {
     return () => clearInterval(intervalId)
   }
   render() {
-    this.console.innerHTML = `<button id="along"></button>
+    this.container.innerHTML = `<button id="along"></button>
                     <button id="across"></button>
                     <button id="top"></button>
                     <button id="right"></button>
                     <button id="bottom"></button>
                     <button id="left"></button>
-                    <table id="tiger"></table>`
-    for (let i=0; i<10; i++) {
+                    <div class="wr-map"><table id="map"></table></div>`
+    for (let i=0; i<8; i++) {
       const tr = document.createElement('tr')
       for (let i=0; i<10; i++) {
         const td = document.createElement('td')
@@ -47,7 +47,7 @@ export default class Game {
           td.classList.toggle('wall')
         }
       }
-      this.map = this.console.lastChild
+      this.map = map
       this.map.appendChild(tr)
     }
   }

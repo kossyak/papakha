@@ -111,42 +111,7 @@
     position: absolute;
 }
 
-/* DEFAULT THEME */
-
-.cm-s-default .cm-header {color: blue;}
-.cm-s-default .cm-quote {color: #090;}
-.cm-negative {color: #d44;}
-.cm-positive {color: #292;}
-.cm-header, .cm-strong {font-weight: bold;}
-.cm-em {font-style: italic;}
-.cm-link {text-decoration: underline;}
-.cm-strikethrough {text-decoration: line-through;}
-
-.cm-s-default .cm-keyword {color: #c53581;}
-.cm-s-default .cm-atom, .cm-number {color: #2f6aff;}
-.cm-s-default .cm-def, .cm-variable-2 {color: #dcd238;}
-.cm-s-default .cm-variable {color: #dda627;}
-.cm-s-default .cm-punctuation,
-.cm-s-default .cm-property { color: #00b4d8; }
-.cm-s-default .cm-operator { color: inherit; }
-.cm-s-default .cm-variable-3, .cm-s-default .cm-type {color: #085;}
-.cm-s-default .cm-comment {color: #555555;}
-.cm-s-default .cm-string {color: #34bf6d;}
-.cm-s-default .cm-string-2 {color: #96b477;}
-.cm-s-default .cm-meta {color: #555;}
-.cm-s-default .cm-qualifier {color: #555;}
-.cm-s-default .cm-builtin {color: #30a;}
-.cm-s-default .cm-bracket {color: #997;}
-.cm-s-default .cm-tag {color: #170;}
-.cm-s-default .cm-attribute {color: #00c;}
-.cm-s-default .cm-hr {color: #999;}
-.cm-s-default .cm-link {color: #00c;}
-
-.cm-s-default .cm-error {color: #f00;}
-.cm-invalidchar {color: #f00;}
-
 .CodeMirror-composing { border-bottom: 2px solid; }
-
 /* Default styles for common addons */
 
 div.CodeMirror span.CodeMirror-matchingbracket {color: #0b0;}

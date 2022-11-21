@@ -10,7 +10,29 @@ body {
 *, :before, :after {
     box-sizing: border-box;
 }
+a {
+    text-decoration: none;
+    white-space: nowrap;
+    display: inline-block;
+    color: inherit;
+    cursor: pointer;
+}
 
+h2 {
+    color: #bababa;
+    font-size: 1.4em;
+    font-weight: normal;
+    margin: .5em 0;
+}
+h3 {
+    color: #bababa;
+    font-size: 1em;
+    font-weight: normal;
+    margin: 2em 0 .5em 0;
+}
+p {
+    margin: .5em 0;
+}
 .wrapper {
     max-height: 100vh;
     display: flex;
@@ -42,6 +64,7 @@ header {
     height: 36px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .buttons {
     display: flex;
@@ -78,7 +101,7 @@ button {
     opacity: .3;
 }
 .sample {
-    background-color: #f7ee0d;
+    background-color: #f0a321;
     color: #000;
     font-weight: bold;
     letter-spacing: -0.02em;
@@ -171,12 +194,11 @@ nav:after {
     height: 36px;
     display: flex;
     align-items: center;
-    color: #757575;
 }
 .logo span {
     margin-left: 13px;
 }
-.logo img {
+header img {
     height: 100%;
 }
 .container {
@@ -200,26 +222,26 @@ nav:after {
 }
 #message {
     position: absolute;
-    top: 0;
-    padding: 30px;
-    padding-bottom: 50px;
+    bottom: 0;
+    padding: 30px 40px;
+    padding-bottom: 40px;
     width: 100%;
-    background-color: #212121eb;
-    backdrop-filter: blur(4px);
-    color: #eee;
     font-family: monospace;
     font-size: 13px;
+    backdrop-filter: blur(4px);
+    background-color: #bababa3b;
 }
 #message:empty {
     display: none;
 }
 #message:after {
     display: block;
-    content: 'click fo skip';
+    content: 'skip';
+    font-family: Arial;
     position: absolute;
     bottom: 20px;
-    right: 30px;
-    color: #777;
+    right: 20px;
+    color: #aaa;
 }
 
 #root::-webkit-scrollbar, .popup::-webkit-scrollbar {
@@ -240,7 +262,7 @@ nav:after {
     min-width: 320px;
     width: 80%;
     max-width: 768px;
-    background-color: #000;
+    background-color: #000000e0;
     color: #777;
     border-radius: 20px;
     top: 50%;
@@ -250,18 +272,10 @@ nav:after {
     padding: 20px;
     padding-top: 0;
     overflow-y: auto;
-    outline: 13px solid #aaaaaa3d;
+    outline: 16px solid #aaaaaa3d;
     z-index: 9999;
 }
-.popup h2 {
-    color: #bababa;
-    font-size: 1.4em;
-    font-weight: normal;
-    margin: .5em 0;
-}
-.popup p {
-    margin: 0;
-}
+
 .close {
     position: sticky;
     margin-left: auto;

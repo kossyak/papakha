@@ -1,0 +1,61 @@
+table {
+    border-collapse: collapse;
+
+}
+td {
+    border: 1px solid #bababa;
+    height: 20px;
+    width: 20px;
+}
+.wall {
+    background-color:darkgray;
+}
+#edenContainer {
+    padding: 50px 0;
+    position: relative;
+}
+.wr-map {
+    margin: 0 auto;
+    width: max-content;
+}
+#edenContainer:empty {
+    display: none;
+}
+#edenContainer > button {
+    position: absolute;
+    padding: 4px;
+}
+
+#edenContainer > button:after {
+    content: '';
+    display: block;
+    height: 100%;
+    background-color: #bababa;
+    border-radius: 1px;
+}
+#edenContainer > button:hover:after {
+    background-color: #212121;
+}
+#top {
+
+}
+
+#bottom {
+
+}
+
+#right {
+
+}
+
+#left {
+
+}
+
+#along {
+
+}
+
+#across {
+
+}
