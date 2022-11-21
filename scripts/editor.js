@@ -4,7 +4,7 @@ const _editor = CodeMirror(editor, {
   lineNumbers: true,
   lineWrapping: true,
   styleActiveLine: true,
-  readOnly: 'nocursor',
+//  readOnly: 'nocursor',
   gutters: ['CodeMirror-lint-markers'],
   lint: {
     esversion: 11,
