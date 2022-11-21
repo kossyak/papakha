@@ -54,7 +54,7 @@ export default class Data {
   update(key) {
     this.data[key] = _editor.getValue()
     localStorage.setItem('csm', JSON.stringify(this.data))
-    // try {
+    try {
       csmContainer.innerHTML = ''
       eden.destroy()
       csm.off()
@@ -62,7 +62,7 @@ export default class Data {
       csm.on('_destroy', () => ui.destroy())
       csm.on('_change', (arg) => ui.change(arg))
       new Function('csm', 'eden', this.data[key])(csm, eden)
-    // } catch (err) {}
+    } catch (err) {}
   }
   active(key) {
     this.current = key
