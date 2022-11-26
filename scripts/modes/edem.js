@@ -31,13 +31,18 @@ export default class Eden {
     return () => clearInterval(intervalId)
   }
   render() {
-    this.container.innerHTML = `<button id="along"></button>
-                    <button id="across"></button>
-                    <button id="top"></button>
-                    <button id="right"></button>
-                    <button id="bottom"></button>
-                    <button id="left"></button>
-                    <div class="wr-map"><table id="map"></table></div>`
+    this.container.innerHTML = `
+                    <div class="wr-map"><table id="map"></table></div>
+                    <div class="panel">
+                      <button id="first"></button>
+                      <div class="btnGroup">
+                        <button id="top"></button>
+                        <button id="right"></button>
+                        <button id="bottom"></button>
+                        <button id="left"></button>
+                      </div>
+                      <button id="last"></button>
+                    </div>`
     for (let i=0; i<8; i++) {
       const tr = document.createElement('tr')
       for (let i=0; i<10; i++) {
@@ -90,5 +95,9 @@ export default class Eden {
     document.onkeyup = (event) => {
       this.events[event.code] && this.events[event.code]()
     }
+  }
+  listener(name, callback) {
+    const btn = this.container.querySelector('#'+ name)
+    if (btn) btn.onclick = callback
   }
 }

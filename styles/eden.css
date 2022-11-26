@@ -11,7 +11,7 @@ td {
     background-color:darkgray;
 }
 #edenContainer {
-    padding: 50px 0;
+    padding: 20px 0;
     position: relative;
 }
 .wr-map {
@@ -21,41 +21,71 @@ td {
 #edenContainer:empty {
     display: none;
 }
-#edenContainer > button {
-    position: absolute;
-    padding: 4px;
+.panel {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
 }
-
-#edenContainer > button:after {
+.btnGroup {
+    position: relative;
+    height: 64px;
+    width: 64px;
+    display: flex;
+}
+.btnGroup button {
+    position: absolute;
+}
+#edenContainer button {
+    box-sizing: content-box;
+    border-radius: 20px;
+}
+#edenContainer button:after {
     content: '';
     display: block;
     height: 100%;
     background-color: #bababa;
     border-radius: 1px;
 }
-#edenContainer > button:hover:after {
+#edenContainer button:hover:after {
     background-color: #212121;
 }
 #top {
-
+    top: 0;
+    left: 20px;
+    padding: 10px 0;
+    width: 24px;
+    height: 4px;
 }
 
 #bottom {
-
+    bottom: 0;
+    left: 20px;
+    padding: 10px 0;
+    width: 24px;
+    height: 4px;
 }
 
 #right {
-
+    right: 0;
+    top: 20px;
+    padding: 0 10px;
+    width: 4px;
+    height: 24px;
 }
 
 #left {
-
+    left: 0;
+    top: 20px;
+    padding: 0 10px;
+    width: 4px;
+    height: 24px;
 }
 
-#along {
-
-}
-
-#across {
-
+#first, #last {
+    padding: 10px 0;
+    width: 24px;
+    height: 4px;
 }
