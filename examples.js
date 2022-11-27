@@ -86,27 +86,24 @@ const skeleton = `const story = {
 csm.create(story)`
 const tiger = `const story = {
   name: 'toggle',
-  context: 'down',
+  context: 'start',
   state: {
     up: {
-      pop: 'down',
-      message: 'gfhfgjfgj'
+      permit: 'start'
     },
     down: {
-      pop: 'up',
-      message: 'gfhfdgdgfsdgjfgj'
-    },
-    stop: {
+      permit: 'start'
     }
   }
 }
 eden.render()
-/*
+
 eden.build('wall', {
-  coords: [{y: 3, x: 3}, {y: 3, x: 3}],
+  coords: [{y: 2, x: 1}, {y: 2, x: 0}],
   color: 'gray'
 })
-*/
+
+eden.listener('left', () => console.log('click left'))
 eden.spawn('tiger', {
     y: 5,
     x: 0,
@@ -117,29 +114,26 @@ eden.spawn('meet', {
     x: eden.random(),
     color: 'red'
 })
-csm.on('up', () => {
-  eden.move('tiger', (y, x) => {
-  if (y === 0) csm.action('down')
-   if (eden.sprite.meet.y > y) {
-      csm.action('down')
+csm.on('up', async () => {
+  if (eden.active.meet.y > eden.active.tiger.y) {
+    csm.action('down')
+  } else if (eden.active.tiger.y === 0) {
+    csm.action('down')
+  } else {
+    try {
+      await eden.move('tiger', { y:eden.active.tiger.y-1 })
+      csm.action('up')
+    } catch(err) {
+      console.log(err)
     }
-    if (eden.sprite.meet.y === y) {
-      return false
-    }
-    console.log(eden.has('wall', 3, 0))
-    return { y: y-1 }
-  })
+  }
+  /*
+    console.log(eden.has('wall', { y:3, x:0 }))
+  */
 })
 
-csm.on('down', () => {
-  eden.move('tiger', (y, x) => {
-    if (y === 9) csm.action('up')
-    if (eden.sprite.meet.y < y) csm.action('up')
-    if (eden.sprite.meet.y === y) {
-      return false
-    }
-    return { y: y+1 }
-  })
+csm.on('down', async () => {
+  await eden.move('tiger', { y:eden.active.tiger.y+1 })
 })
 
 csm.create(story)`

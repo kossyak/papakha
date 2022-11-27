@@ -22,7 +22,7 @@ export default {
     if (!v) return []
     return Array.isArray(v) ? v : [v]
   },
-  action(key, data) {
+  async action(key, data) {
     const action = this.state[key]
     if (action) {
       if (!this.context.includes(key)) this.context.push(key)
@@ -30,8 +30,9 @@ export default {
       this.delete(action)
       this.set(action)
     }
-    if (this.current.includes(key)) this.emit(key, this.context, data)
+    let fl = this.current.includes(key)
     this.update(key)
+    if (fl) await this.emit(key, this.context, data)
   },
   set(action) {
     if(action.set) this.context = this.value(action.set)
@@ -71,16 +72,16 @@ export default {
         } else actions.push(key)
       }
     }
+    this.emit('_change', {actions, trigger, context: this.context})
     if (actions.toString() !== this.current.toString()) {
-      this.emit('_change', {actions, trigger, context: this.context})
       this.current = [...actions]
     }
   },
-  emit(key, context, data) {
+  async emit(key, context, data) {
     if (!this.events[key]) return
     const callbacks = this.events[key]
     for (const callback of callbacks) {
-      callback(context, data)
+      await callback(context, data)
     }
   },
   on(key, callback) {

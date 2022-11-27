@@ -19,7 +19,7 @@ const _editor = CodeMirror(editor, {
 })
 
 import csmUI from './modes/csmUI.js'
-import Eden from './modes/edem.js'
+import Eden from './modes/eden.js'
 
 const ui = new csmUI(csm)
 const eden = new Eden()
