@@ -7,8 +7,8 @@
 .ex-bns .popup-icon {
     height: 48px;
     width: 48px;
-    margin-top: -18px;
-    padding: 15px;
+    margin-top: -16px;
+    padding: 16px;
     background-color: #383838;
     border-radius: 8px;
 }
@@ -32,6 +32,7 @@
     font-family: monospace;
 }
 .ex-bns button {
+    background-color: inherit;
     min-width: 60px;
     height: 60px;
     margin-top: 10px;
@@ -41,15 +42,15 @@
     border-radius: 5px;
 }
 
-[data-id="skeleton"] {
+.skeleton {
     background-image: url("../icons/skeleton.svg");
     background-size: cover;
 }
-[data-id="flame"] {
+.flame {
     background-image: url("../icons/flame.svg");
     background-size: cover;
 }
-[data-id="tiger"] {
+.tiger {
     background-image: url("../icons/tiger.svg");
     background-size: cover;
 }

@@ -1,17 +1,19 @@
 const flame = `const story = {
   name: 'door',
   description: '',
-  context: ['lock', 'dark'],
-  state: {
+  context: ['start', 'lock', 'dark', 'close'],
+  actions: {
+    welcome: {
+      permit: 'start',
+      notify: ['Перед вами дверь...', 'Слева от двери на стене закреплен факел']
+    },
     light: {
       pop: 'dark',
-      tabu: 'enter',
-      text: 'Включить свет'
+      text: 'Взять факел',
     },
     dark: {
       pop: 'light',
-      tabu: 'enter',
-      text: 'Выключить свет'
+      text: 'Вставить факел обратно'
     },
     lock: {
       pop: 'unlock',
@@ -20,51 +22,63 @@ const flame = `const story = {
       text: 'Запереть дверь'
     },
     unlock: {
+      delete: 'start',
       pop: 'lock',
-      push: 'close',
-      text: 'Отпереть дверь'
+      text: 'Отпереть дверь',
     },
     close: {
       pop: 'open',
-      permit: 'unlock',
-      tabu: 'enter',
       text: 'Закрыть дверь'
     },
     open: {
       pop: 'close',
       permit: 'unlock',
-      text: 'Открыть дверь'
+      text: 'Открыть дверь',
     },
     enter: {
       permit: 'open',
-      tabu: ['enter', 'key'],
-      text: 'Войти в комнату'
-    },
-    back: {
-      pop: 'enter',
-      delete: 'table',
-      text: 'Выйти из комнаты'
-    },
-    table: {
-      permit: ['enter', 'light'],
-      tabu: 'table',
-      text: 'Осмотреть стол'
-    },
-    key: {
-      permit: ['enter', 'table'],
-      tabu: 'key',
-      delete: 'trigger',
-      text: 'Взять ключ'
+      tabu: ['key', 'trigger'],
+      text: 'Войти в комнату',
+      actions: {
+        room: {
+          permit: 'dark',
+          notify: ['Здесь темно и совсем ничего не видно.']
+        },
+        inside: {
+          permit: 'light',
+          notify: ['Вы в пустой комнате...', 'В центре комнаты стоит стол.']
+        },
+        back: {
+          to: '/',
+          text: 'Выйти из комнаты'
+        },
+        table: {
+          permit: 'light',
+          text: 'Осмотреть стол',
+          actions: {
+            key: {
+              to: '/enter',
+              tabu: 'key',
+              delete: 'trigger',
+              text: 'Взять ключ'
+            },
+            empty: {
+              permit: 'key',
+              to: '/enter',
+              text: 'пусто'
+            }
+          }
+        }
+      }
     },
     exit: {
-      permit: ['key', 'open', 'trigger'],
-      tabu: 'exit',
-      set: 'exit',
-      text: 'Выйти'
-    },
-    end: {
-      permit: 'exit',
-      text: 'Конец игры'
+      permit: ['open', 'trigger', 'key'],
+      text: 'Выйти',
+      actions: {
+        end: {
+          text: 'Конец игры'
+        }
+      }
     }
   }
 }
@@ -84,19 +98,7 @@ const skeleton = `const story = {
   }
 }
 csm.create(story)`
-const tiger = `const story = {
-  name: 'toggle',
-  context: 'start',
-  state: {
-    up: {
-      permit: 'start'
-    },
-    down: {
-      permit: 'start'
-    }
-  }
-}
-eden.render()
+const tiger = `eden.map(10, 8)
 
 eden.build('wall', {
   coords: [{y: 2, x: 1}, {y: 2, x: 0}],
@@ -104,39 +106,19 @@ eden.build('wall', {
 })
 
 eden.listener('left', () => console.log('click left'))
+
 eden.spawn('tiger', {
-    y: 5,
-    x: 0,
-    color: 'orange'
+  y: 5,
+  x: 0,
+  color: 'orange'
 })
 eden.spawn('meet', {
-    y: eden.random(),
-    x: eden.random(),
-    color: 'red'
-})
-csm.on('up', async () => {
-  if (eden.active.meet.y > eden.active.tiger.y) {
-    csm.action('down')
-  } else if (eden.active.tiger.y === 0) {
-    csm.action('down')
-  } else {
-    try {
-      await eden.move('tiger', { y:eden.active.tiger.y-1 })
-      csm.action('up')
-    } catch(err) {
-      console.log(err)
-    }
-  }
-  /*
-    console.log(eden.has('wall', { y:3, x:0 }))
-  */
+  y: eden.random(9),
+  x: eden.random(9),
+  color: 'red'
 })
 
-csm.on('down', async () => {
-  await eden.move('tiger', { y:eden.active.tiger.y+1 })
-})
-
-csm.create(story)`
+eden.move('tiger', { y:eden.active.tiger.y-1 })`
 
 
 export default { flame, skeleton, tiger }

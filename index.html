@@ -1,56 +1,21 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="icon" href="icons/logo.svg">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="styles/eden.css" rel="stylesheet">
-        <link href="styles/examples.css" rel="stylesheet">
-        <link href="styles/index.css" rel="stylesheet">
-        <title>Context State Machine</title>
-    <!--        <script src="https://cdn.jsdelivr.net/gh/kossyak/csmjs@main/bundlers/csm.min.js"></script>-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/lint/lint.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/lint/javascript-lint.min.js"></script>
-        <script src="https://unpkg.com/jshint@2.13.2/dist/jshint.js"></script>
-        <link rel="stylesheet" href="styles/codemirror.css" type="text/css"/>
-        <link rel="stylesheet" href="styles/themecode.css" type="text/css"/>
-        <link rel="stylesheet" href="styles/lint.css" type="text/css"/>
-    </head>
-    <body>
-    <div class="popup">
-        <div class="close"><img src="icons/remove.svg"></div>
-        <div></div>
-       </div>
-    <div class="wrapper">
-        <header>
-            <div class="logo">
-                <img src="icons/logo.svg">
-            </div>
-            <div class="buttons">
-                <button class="btn bar" title="bar"><img src="icons/bar.svg"></button>
-                <button class="btn refresh" title="refresh"><img src="icons/refresh.svg"></button>
-                <button class="btn prompt" title="prompt"><img src="icons/prompt.svg"></button>
-            </div>
-        </header>
-        <div class="container">
-            <div id="editor"></div>
-            <div id="root">
-                <div id="edenContainer"></div>
-                <div id="csmContainer"></div>
-                <div id="message"></div>
-            </div>
-        </div>
-        <footer>
-            <button class="btn sample" title="sample"><img src="icons/examples.svg"></button>
-            <button class="new btn" title="add"><img src="icons/add.svg"></button>
-            <div class="current"><input class="name" placeholder="rename" maxlength="12" ></div>
-            <nav></nav>
-            <button class="group btn"><img src="icons/group.svg"></button>
-        </footer>
-    </div>
-    <script type="module" src="scripts/modes/csmUI.js"></script>
-    <script type="module" src="scripts/index.js"></script>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/lint/lint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/lint/javascript-lint.min.js"></script>
+    <script src="https://unpkg.com/jshint@2.13.2/dist/jshint.js"></script>
+    <link rel="stylesheet" href="styles/codemirror.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/themecode.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/lint.css" type="text/css"/>
+    <script src="https://cdn.jsdelivr.net/gh/lestejs/leste@latest/bundlers/leste.global.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="index.js"></script>
+</body>
 </html>
