@@ -37,12 +37,12 @@ a {
 #editor {
     min-width: 380px;
     flex: 1 1 68%;
-    padding: 10px;
 }
 #result {
     overflow-y: auto;
     flex: 1 1 32%;
     position: relative;
+    padding: 10px;
 }
 .code #editor {
     min-width: 100%;
