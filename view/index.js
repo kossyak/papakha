@@ -5,8 +5,8 @@ export default {
   update(code) {
     this._editor.setValue(code ?? this.code)
   },
-  notify() {
-    console.log('notify')
+  notify(v) {
+    console.log(v)
   },
   active(target, tab) {
     this.current?.classList.remove('active')
