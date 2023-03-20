@@ -19,16 +19,15 @@
 .cm-strikethrough {text-decoration: line-through;}
 
 .hljs-keyword, .cm-keyword {color: #c53581;}
-.hljs-literal, .hljs-number, .cm-atom, .cm-number {color: #2f6aff;}
+.hljs-literal, .hljs-number, .cm-atom, .cm-number {color: #4db5b6;}
 .hljs-params, .cm-def, .cm-variable-2 {color: #dcd238;}
 .hljs-variable, .cm-variable {color: #f0a321;}
 .cm-punctuation,
-.hljs-title, .hljs-attr, .hljs-property, .cm-property { color: #00b4d8; }
+.hljs-title, .hljs-attr, .hljs-property, .cm-property { color: #dadada; }
 .cm-operator { color: inherit; }
 .cm-variable-3, .cm-s-default .cm-type {color: #085;}
 .hljs-comment, .cm-comment {color: #555555;}
-.hljs-string, .cm-string {color: #34bf6d;}
-.cm-string-2 {color: #96b477;}
+.hljs-string, .cm-string, .cm-string-2 {color: #34bf6d;}
 .cm-meta {color: #555;}
 .cm-qualifier {color: #555;}
 .cm-builtin {color: #30a;}
