@@ -5,6 +5,7 @@ body {
     margin: 0;
     font-size: 15px;
     max-height: 100vh;
+    font-family: monospace;
 }
 *, :before, :after {
     box-sizing: border-box;
@@ -117,6 +118,7 @@ a {
 
 #result::-webkit-scrollbar {
     width: 7px;
+    height: 7px;
 }
 
 #result::-webkit-scrollbar-track {

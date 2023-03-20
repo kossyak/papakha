@@ -15,7 +15,7 @@
 <body>
     <div class="wrapper">
         <div class="header">
-            <a class="logo">Edit on Papakha</a>
+            <a class="logo" href="https://papakha.sashakosyak.site/">Edit on Papakha</a>
             <div class="buttons" id="view-control">
                 <div class="split active">split</div>
                 <div class="code">code</div>
@@ -93,7 +93,7 @@ S18.2,0,16,0L16,0z"/>
           btnCode.onclick = () => this.active(btnCode, 'code')
           btnResult.onclick = () => this.active(btnResult, 'result')
 
-          if (document.documentElement.clientWidth < 620) {
+          if (document.documentElement.clientWidth < 540) {
             this.active(btnCode, 'code')
           } else {
             this.active(btnSplit, 'split')
@@ -102,7 +102,7 @@ S18.2,0,16,0L16,0z"/>
 
           this.code = code || ''
           this._editor = CodeMirror(editor, {
-            lineNumbers: true,
+            // lineNumbers: true,
             lineWrapping: true,
             styleActiveLine: true,
             gutters: ['CodeMirror-lint-markers'],
@@ -123,7 +123,7 @@ S18.2,0,16,0L16,0z"/>
             try {
               change && change(this.code)
               // result.contentWindow.result(this.code)
-              new Function('leste', code)(leste)
+              new Function('leste', this.code)(leste)
             } catch (err) {
               console.log(err)
             }
