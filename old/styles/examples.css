@@ -43,18 +43,18 @@
 }
 
 .skeleton {
-    background-image: url("../icons/skeleton.svg");
+    background-image: url("../../assets/icons/skeleton.svg");
     background-size: cover;
 }
 .flame {
-    background-image: url("../icons/flame.svg");
+    background-image: url("../../assets/icons/flame.svg");
     background-size: cover;
 }
 .tiger {
-    background-image: url("../icons/tiger.svg");
+    background-image: url("../../assets/icons/tiger.svg");
     background-size: cover;
 }
 [data-id="logo"] {
-    background-image: url("../icons/logo_white.svg");
+    background-image: url("../../assets/icons/logo_white.svg");
     background-size: cover;
 }

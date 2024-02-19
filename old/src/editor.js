@@ -7,7 +7,7 @@ import examples from 'bundle-text:../icons/examples.svg'
 import group from 'bundle-text:../icons/group.svg'
 import prompt from 'bundle-text:../icons/prompt.svg'
 // view
-import view from '../view/index'
+import view from '../view'
 // data'
 import data from './data'
 // path edit

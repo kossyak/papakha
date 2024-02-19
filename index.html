@@ -1,21 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <title>Papakha</title>
+    <link rel="icon" type="image/x-icon" href="/styles/logo.svg">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com"/>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net"/>
+    <link href="./styles/common.css" rel="stylesheet">
+    <link href="./styles/themecode.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/lint/lint.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/lint/javascript-lint.min.js"></script>
-    <script src="https://unpkg.com/jshint@2.13.2/dist/jshint.js"></script>
-    <link rel="stylesheet" href="styles/codemirror.css" type="text/css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kossyak/papakha@latest/styles/themecode.min.css" type="text/css"/>
-    <link rel="stylesheet" href="styles/lint.css" type="text/css"/>
-    <script src="https://cdn.jsdelivr.net/gh/lestejs/leste@latest/bundlers/leste.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jshint@2.13.6/dist/jshint.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lestajs/core@latest/dist/lesta.global.js"></script>
 </head>
 <body>
-    <div id="root"></div>
-    <script type="module" src="index.js"></script>
+<div class="wrapper">
+    <div class="header">
+        <a href="https://papakha.lesta.dev" target="_blank" class="logo"></a>
+<!--        <button class="settings" title="settings"></button>-->
+        <button class="reset" title="reset"></button>
+        <button class="clear" title="clear"></button>
+        <button class="copy" title="copy url"></button>
+        <div class="buttons" id="view-control"></div>
+    </div>
+    <div id="container">
+        <div id="editor"></div>
+        <iframe id="result" allow="midi; geolocation; microphone; camera; display-capture; encrypted-media; clipboard-read; clipboard-write;" sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation allow-downloads"></iframe>
+    </div>
+</div>
+<script type="module" src="index.js"></script>
 </body>
 </html>

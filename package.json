@@ -3,37 +3,26 @@
   "version": "1.0.0",
   "description": "",
   "source": "index.html",
-  "browserslist": "> 0.5%, last 2 versions, not dead",
-  "targets": {
-    "iframe": {
-      "source": "view/iframe.html",
-      "distDir": "dist/iframe",
-      "sourceMap": false
-    }
-  },
   "scripts": {
-    "start": "parcel",
-    "state": "parcel state/index.html",
-    "build": "parcel build",
-    "iframe": "parcel build --target iframe"
+    "dev": "parcel index.html",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kossyak/papakha.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sasha Kosyak",
   "devDependencies": {
-    "@parcel/transformer-inline-string": "^2.8.2",
-    "autoprefixer": "^10.4.13",
-    "parcel": "^2.3.2",
-    "postcss": "^8.4.20",
-    "postcss-nested": "^6.0.0"
+    "parcel": "^2.3.2"
   },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kossyak/papakha/issues"
   },
-  "homepage": "https://github.com/kossyak/papakha#readme",
-  "type": "module"
+  "homepage": "https://papakha.lesta.dev",
+  "type": "module",
+  "dependencies": {
+    "pako": "^2.1.0"
+  }
 }

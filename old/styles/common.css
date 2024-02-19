@@ -3,7 +3,7 @@ html, body {
 }
 body {
     margin: 0;
-    font-size: 13px;
+    font-size: 15px;
     max-height: 100vh;
     font-family: Arial;
 }
@@ -17,84 +17,31 @@ a {
     color: inherit;
     cursor: pointer;
 }
-button {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    color: inherit;
-    cursor: pointer;
-    padding: 0;
-    text-wrap: nowrap;
-    text-align: left;
-    border: 0;
-    font-size: inherit;
-}
-button[disabled] {
-    opacity: .4;
-}
 .wrapper {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     position: relative;
     box-shadow: inset 0 0 0 1px #00000020;
-}
-.header {
-    position: sticky;
-    top: 0;
-    z-index: 9;
-    background-color: #1f1f1f;
-    height: 34px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #2e2e2e;
-    color: #666666;
-}
-.header button {
-    padding: 8px 10px;
-    height: 100%;
-    cursor: pointer;
-    gap: 8px;
-}
-
-.header svg {
-    width: 14px;
-    fill: #666666;
-}
-
-.logo {
-    height: 100%;
-    aspect-ratio: 1;
-    background: url("logo.svg") no-repeat;
-    margin-right: 8px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 #container {
     flex: 1;
     display: flex;
     position: relative;
-    overflow: auto;
-    scroll-snap-type: y mandatory;
 }
-#container > * {
-    min-height: calc(100vh - 34px);
-    height: calc(100vh - 34px);
-    scroll-snap-align: start;
-    scroll-margin-top: 0;
-}
-
-#container[direction="row"] {
-    flex-direction: row;
-}
-#container[direction="col"] {
-    flex-direction: column;
+.fx {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #editor {
     min-width: 420px;
     flex: 1 1 68%;
+    border-radius: 0 0 0 8px;
     overflow: hidden;
-    height: 100%;
 }
 #result {
     overflow-y: auto;
@@ -103,48 +50,55 @@ button[disabled] {
     padding: 10px;
     background-color: white;
     box-shadow: inset 0 0 0 1px #00000020;
-    border: 0;
+    border-radius: 0 0 8px 0;
 }
-[hidden] {
+.code #editor {
+    min-width: 100%;
+}
+.code #result {
     display: none;
 }
-/*.code #editor {*/
-/*    min-width: 100%;*/
-/*}*/
-
-[direction="row"][view="code"] #result {
+.result #result {
+    min-width: 100%;
+}
+.result #editor {
     display: none;
 }
-[direction="row"][view="result"] #editor {
-    display: none;
-}
-
-/*.result #result {*/
-/*    min-width: 100%;*/
-/*}*/
-/*.result #editor {*/
-/*    display: none;*/
-/*}*/
 
 #view-control {
     display: flex;
-    margin-left: auto;
+}
+#view-control > div {
+    padding: .5em 10px;
+    height: 100%;
+    cursor: pointer;
+}
+#view-control svg {
+    width: 22px;
+    fill: #666666;
 }
 
-#view-control .active.col-btn svg {
+.refreshBtn {
+    margin-right: 10px;
+}
+#view-control .refreshBtn svg {
     fill: #00b4d8;
 }
 
-#view-control .active.row-btn svg {
+#view-control .active.splitBtn svg {
     fill: #f0a321;
 }
-
-#view-control .active.code-btn svg {
+#view-control .active.codeBtn svg {
     fill: #c53581;
 }
-#view-control .active.result-btn svg {
+#view-control .active.resultBtn svg {
     fill: #34bf6d;
 }
+/*
+#view-control .active {
+    box-shadow: inset 0 -3px 0 0;
+}
+*/
 
 #message {
     position: absolute;
@@ -170,18 +124,42 @@ button[disabled] {
     color: #aaa;
 }
 
-
-::-webkit-scrollbar {
+#result::-webkit-scrollbar {
     width: 7px;
     height: 7px;
 }
 
-::-webkit-scrollbar-track {
-    background-color: #aaa;
+#result::-webkit-scrollbar-track {
+    background-color: transparent;
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: #666;
+#result::-webkit-scrollbar-thumb {
+    background-color: #777;
+}
+
+.show {
+    display: block !important;
+}
+
+/* index */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    background-color: #1f1f1f;
+    height: 33px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em;
+    border-radius: 8px 8px 0 0;
+}
+#container {
+    height: calc(100% - 33px);
+}
+.logo {
+    margin-left: 5px;
+    color: #666666;
 }
 
 /* BASICS */
@@ -206,7 +184,7 @@ button[disabled] {
     padding: 10px 0; /* Vertical padding around content */
 }
 .CodeMirror pre {
-    padding: 0 20px; /* Horizontal padding of content */
+    padding: 0 10px; /* Horizontal padding of content */
 }
 
 .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
@@ -221,12 +199,12 @@ button[disabled] {
 }
 .CodeMirror-linenumbers {}
 .CodeMirror-linenumber {
-    padding: 2px 8px 0 3px;
+    padding: 3px 8px 0 3px;
     min-width: 15px;
     text-align: right;
     color: #999;
     white-space: nowrap;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .CodeMirror-guttermarker { color: black; }

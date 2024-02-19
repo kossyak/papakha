@@ -21,7 +21,7 @@
 .hljs-keyword, .cm-keyword {color: #c53581;}
 .hljs-literal, .hljs-number, .cm-atom, .cm-number {color: #4db5b6;}
 .hljs-params, .cm-def, .cm-variable-2 {color: #dcd238;}
-.hljs-variable, .cm-variable {color: #349db5;}
+.hljs-variable, .cm-variable {color: #f0a321;}
 .cm-punctuation,
 .hljs-title, .hljs-attr, .hljs-property, .cm-property { color: #dadada; }
 .cm-operator { color: inherit; }
