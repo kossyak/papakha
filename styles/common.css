@@ -70,7 +70,7 @@ button[disabled] {
     flex: 1;
     display: flex;
     position: relative;
-    overflow: auto;
+    overflow: hidden;
     scroll-snap-type: y mandatory;
 }
 #container > * {
@@ -143,7 +143,7 @@ button[disabled] {
 #view-control .active.result-btn svg {
     fill: #34bf6d;
 }
-*/
+
 ::-webkit-scrollbar {
     width: 7px;
     height: 7px;
@@ -156,7 +156,7 @@ button[disabled] {
 ::-webkit-scrollbar-thumb {
     background-color: #666;
 }
-
+*/
 /* BASICS */
 
 .CodeMirror {
@@ -166,7 +166,7 @@ button[disabled] {
     height: 100%;
     color: #8b8b8b;
     background-color: #fff;
-    line-height: 1.3;
+    line-height: 1.2;
     overflow: hidden;
     width: 100%;
     direction: ltr;
@@ -322,7 +322,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
 }
 
 .CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
-    background-color: #777;
+    background-color: #212121;
 }
 .CodeMirror-hscrollbar {
     bottom: 0; left: 0;
