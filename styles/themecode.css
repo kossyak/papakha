@@ -1,8 +1,8 @@
 /* DEFAULT THEME */
 .lang-js {
     padding: 0 10px;
-    color: #dbdbdb;
-    background-color: #0c0d0e;
+    color: #333;
+    background-color: #fff;
     font-family: monospace;
     font-size: 15px;
     height: 100%;
@@ -20,13 +20,13 @@
 
 .hljs-keyword, .cm-keyword {color: #c53581;}
 .hljs-literal, .hljs-number, .cm-atom, .cm-number {color: #4db5b6;}
-.hljs-params, .cm-def, .cm-variable-2 {color: #dcd238;}
-.hljs-variable, .cm-variable {color: #349db5;}
+.hljs-params, .cm-def, .cm-variable-2  {color: #1c8c9e;}
+.hljs-variable, .cm-variable {color: #f0a321;}
 .cm-punctuation,
-.hljs-title, .hljs-attr, .hljs-property, .cm-property { color: #dadada; }
+.hljs-title, .hljs-attr, .hljs-property, .cm-property { color: #333; }
 .cm-operator { color: inherit; }
 .cm-variable-3, .cm-s-default .cm-type {color: #085;}
-.hljs-comment, .cm-comment {color: #555555;}
+.hljs-comment, .cm-comment {color: #bcbcbc;}
 .hljs-string, .cm-string, .cm-string-2 {color: #34bf6d;}
 .cm-meta {color: #555;}
 .cm-qualifier {color: #555;}

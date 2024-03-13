@@ -6,6 +6,8 @@
   "targets": {
     "page": {
       "source": "index.html",
+      "sourceMap": false,
+      "optimize": true,
       "distDir": "./docs"
     }
   },
