@@ -43,6 +43,7 @@ button[disabled] {
     position: sticky;
     top: 0;
     z-index: 9;
+    background-color: white;
     outline: 1px solid #00000020;
     height: 36px;
     display: flex;
@@ -322,7 +323,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
 }
 
 .CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
-    background-color: #212121;
+    background-color: #c4c4c4;
 }
 .CodeMirror-hscrollbar {
     bottom: 0; left: 0;
