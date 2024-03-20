@@ -72,11 +72,13 @@ button[disabled] {
     display: flex;
     position: relative;
     overflow: hidden;
-    scroll-snap-type: y mandatory;
+    /* scroll-snap-type: y mandatory; */
 }
 #container > * {
+    /*
     scroll-snap-align: start;
     scroll-margin-top: 0;
+    */
     outline: 1px solid #00000020;
 }
 
@@ -165,7 +167,7 @@ button[disabled] {
     font-family: monospace;
     font-size: 15px;
     height: 100%;
-    color: #8b8b8b;
+    color: #434343;
     background-color: #fff;
     line-height: 1.2;
     overflow: hidden;
