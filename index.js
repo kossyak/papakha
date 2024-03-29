@@ -72,6 +72,7 @@ window.view = {
     result.contentWindow.csm = csm
     result.contentWindow.lesta = lesta
     result.contentWindow.body = result.contentWindow.document.body
+    result.contentWindow.body.innerHTML = '<div class="result-txt">Iframe to display the result</div>'
     result.contentWindow.document.head.innerHTML = `
     <style>
         body {
@@ -82,23 +83,21 @@ window.view = {
             color: #666666;
         }
     </style>`
-    const scriptTag = result.contentWindow.document.createElement('script')
-    scriptTag.innerHTML = `
-      window.addEventListener("message", (message) => {
-        try {
-          document.body.innerHTML = '<div class="result-txt">Iframe to display the result</div>'
-          eval.call(null, message.data)
-        } catch (err) {
-          console.log(err)
-        }
-      })`
-    result.contentWindow.document.head.append(scriptTag)
+    let scriptTag = null
+    const refresh = (code) => {
+      scriptTag && scriptTag.remove?.()
+      scriptTag = result.contentWindow.document.createElement('script')
+      scriptTag.type = 'module'
+      scriptTag.innerHTML = code
+      result.contentWindow.document.head.appendChild(scriptTag)
+    }
+
     this._editor.on('changes', () => {
       this.code = this._editor.getValue()
       history.pushState(null, null, '/' + compress(this.code))
       try {
         this.onchange?.(this.code)
-        result.contentWindow.postMessage(this.code, '*')
+        refresh(this.code)
         // new Function('csm', 'result', this.code)('csm', this.result)
       } catch (err) {
         console.log(err)

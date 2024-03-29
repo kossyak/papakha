@@ -23,7 +23,7 @@
 .hljs-params, .cm-def, .cm-variable-2  {color: #0f6095;}
 .hljs-variable, .cm-variable {color: #30425f;}
 .cm-punctuation,
-.hljs-title, .hljs-attr, .hljs-property, .cm-property { color: #eca910; }
+.hljs-title, .hljs-attr, .hljs-property, .cm-property { color: #0099bc; }
 .cm-operator { color: inherit; }
 .cm-variable-3, .cm-s-default .cm-type {color: #085;}
 .hljs-comment, .cm-comment {color: #bcbcbc;}

@@ -72,13 +72,11 @@ button[disabled] {
     display: flex;
     position: relative;
     overflow: hidden;
-    /* scroll-snap-type: y mandatory; */
+    scroll-snap-type: y mandatory;
 }
 #container > * {
-    /*
     scroll-snap-align: start;
     scroll-margin-top: 0;
-    */
     outline: 1px solid #00000020;
 }
 
