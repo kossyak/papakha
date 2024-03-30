@@ -1,9 +1,8 @@
 import control from './control'
 import { compress, decompress } from './utils'
-import csm from './utils/csm.js'
 import dpi from './utils/dpi.js'
 
-const text = `/* Additional global objects: body, lesta, csm. */\n`
+const text = `/* Additional global objects: body, lesta */\n`
 
 window.view = {
   code: decompress(window.location.pathname.slice(1)) || text,
@@ -19,8 +18,6 @@ window.view = {
   create(code) {
     const editor = document.getElementById('editor')
     const result = document.getElementById('result')
-    // const settingsBtn = document.querySelector('.settings')
-    // settingsBtn.innerHTML = dpi('0000010111000001110100000')
    
     const clearBtn = document.querySelector('.clear')
     clearBtn.innerHTML = dpi('0111000000011100111001110')
@@ -69,7 +66,6 @@ window.view = {
         statementIndent: 2
       }
     })
-    result.contentWindow.csm = csm
     result.contentWindow.lesta = lesta
     result.contentWindow.body = result.contentWindow.document.body
     result.contentWindow.body.innerHTML = '<div class="result-txt">Iframe to display the result</div>'
