@@ -2,10 +2,8 @@ import control from './control'
 import { compress, decompress } from './utils'
 import dpi from './utils/dpi.js'
 
-const text = `/* Additional global objects: body, lesta */\n`
-
 window.view = {
-  code: decompress(window.location.pathname.slice(1)) || text,
+  code: decompress(window.location.pathname.slice(1)) || '',
   _editor: {},
   current: null,
   column: false,
@@ -23,7 +21,7 @@ window.view = {
     clearBtn.innerHTML = dpi('0111000000011100111001110')
     clearBtn.onclick = () => {
       if (confirm('Are you sure you want to clear code and discard the current changes?')) {
-        this.update(text)
+        this.update()
       }
     }
     
@@ -66,34 +64,20 @@ window.view = {
         statementIndent: 2
       }
     })
-    result.contentWindow.lesta = lesta
-    result.contentWindow.body = result.contentWindow.document.body
-    result.contentWindow.body.innerHTML = '<div class="result-txt">Iframe to display the result</div>'
-    result.contentWindow.document.head.innerHTML = `
-    <style>
-        body {
-            font-family: Arial;
-            font-size: 14px;
-        }
-        .result-txt {
-            color: #666666;
-        }
-    </style>`
-    let scriptTag = null
-    const refresh = (code) => {
-      scriptTag && scriptTag.remove?.()
-      scriptTag = result.contentWindow.document.createElement('script')
-      scriptTag.type = 'module'
-      scriptTag.innerHTML = code
-      result.contentWindow.document.head.appendChild(scriptTag)
-    }
-
     this._editor.on('changes', () => {
       this.code = this._editor.getValue()
       history.pushState(null, null, '/' + compress(this.code))
       try {
         this.onchange?.(this.code)
-        refresh(this.code)
+        result.srcdoc = `
+        <script src="https://cdn.jsdelivr.net/gh/lestajs/core@latest/dist/lesta.global.js"></script>
+        <style>
+            body {
+                font-family: Arial;
+                font-size: 14px;
+            }
+        </style>
+        <script type="module" defer>${this.code}</script>`
         // new Function('csm', 'result', this.code)('csm', this.result)
       } catch (err) {
         console.log(err)

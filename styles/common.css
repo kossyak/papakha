@@ -161,6 +161,7 @@ button[hidden] {
     /* Set height, width, borders, and global font properties here */
     font-family: monospace;
     font-size: 15px;
+    font-weight: 600;
     height: 100%;
     color: #434343;
     background-color: #fff;
@@ -192,12 +193,13 @@ button[hidden] {
 }
 .CodeMirror-linenumbers {}
 .CodeMirror-linenumber {
-    padding: 2px 8px 0 3px;
+    padding: 2px 10px 0 5px;
     min-width: 15px;
     text-align: right;
     color: #999;
     white-space: nowrap;
     font-size: 13px;
+    font-weight: normal;
 }
 
 .CodeMirror-guttermarker { color: black; }

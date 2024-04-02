@@ -26,7 +26,7 @@
 .hljs-title, .hljs-attr, .hljs-property, .cm-property { color: #0099bc; }
 .cm-operator { color: inherit; }
 .cm-variable-3, .cm-s-default .cm-type {color: #085;}
-.hljs-comment, .cm-comment {color: #bcbcbc;}
+.hljs-comment, .cm-comment {color: #999; font-weight: normal}
 .hljs-string, .cm-string, .cm-string-2 {color: #34bf6d;}
 .cm-meta {color: #555;}
 .cm-qualifier {color: #555;}
