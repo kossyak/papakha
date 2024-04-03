@@ -58,9 +58,7 @@ window.view = {
   
     const refreshBtn = document.querySelector('.refresh')
     refreshBtn.innerHTML = dpi('0000011101100011011100000')
-    refreshBtn.onclick = () => {
-
-    }
+    refreshBtn.onclick = () => this.refresh()
     
     control.create()
     if (code) this.code = code
