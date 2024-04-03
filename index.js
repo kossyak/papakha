@@ -4,19 +4,30 @@ import dpi from './utils/dpi.js'
 
 window.view = {
   code: decompress(window.location.pathname.slice(1)) || '',
+  editorContainer: document.getElementById('editor'),
+  resultContainer: document.getElementById('result'),
   _editor: {},
   current: null,
   column: false,
+  url: '',
   update(code) {
     this._editor.setValue(code ?? this.code)
   },
   notify(v) {
     console.log(v)
   },
+  refresh() {
+    this.resultContainer.srcdoc = `
+        <script src="https://cdn.jsdelivr.net/gh/lestajs/core@latest/dist/lesta.mountComponent.global.prod.js"></script>
+        <style>
+            body {
+                font-family: Arial;
+                font-size: 14px;
+            }
+        </style>
+        <script type="module" defer>${this.code}</script>`
+  },
   create(code) {
-    const editor = document.getElementById('editor')
-    const result = document.getElementById('result')
-   
     const clearBtn = document.querySelector('.clear')
     clearBtn.innerHTML = dpi('0111000000011100111001110')
     clearBtn.onclick = () => {
@@ -38,16 +49,22 @@ window.view = {
     const copyBtn = document.querySelector('.copy')
     copyBtn.innerHTML = dpi('1110011100111010000100111')
     copyBtn.onclick = () => {
-      navigator.clipboard.writeText(window.location.href).then(() =>{
+      navigator.clipboard.writeText(this.url).then(() =>{
         alert('URL copied')
-      }, function(err) {
+      }, function() {
         alert('copy error')
       })
+    }
+  
+    const refreshBtn = document.querySelector('.refresh')
+    refreshBtn.innerHTML = dpi('0000011101100011011100000')
+    refreshBtn.onclick = () => {
+
     }
     
     control.create()
     if (code) this.code = code
-    this._editor = CodeMirror(editor, {
+    this._editor = CodeMirror(this.editorContainer, {
       lineNumbers: true,
       lineWrapping: true,
       styleActiveLine: true,
@@ -66,25 +83,19 @@ window.view = {
     })
     this._editor.on('changes', () => {
       this.code = this._editor.getValue()
-      history.pushState(null, null, '/' + compress(this.code))
+      const compressed = compress(this.code)
+      this.url = 'https://papakha.lesta.dev/' + compressed
+      history.pushState(null, null, '/' + compressed)
       try {
         this.onchange?.(this.code)
-        result.srcdoc = `
-        <script src="https://cdn.jsdelivr.net/gh/lestajs/core@latest/dist/lesta.global.js"></script>
-        <style>
-            body {
-                font-family: Arial;
-                font-size: 14px;
-            }
-        </style>
-        <script type="module" defer>${this.code}</script>`
+        this.refresh()
         // new Function('csm', 'result', this.code)('csm', this.result)
       } catch (err) {
         console.log(err)
       }
     })
     const lineCount = this._editor.lineCount();
-    this._editor.setCursor({ line: lineCount - 1, ch: 2 });
+    this._editor.setCursor({ line: lineCount - 1, ch: 2 })
     this.update()
   }
 }
