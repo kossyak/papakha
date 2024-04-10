@@ -49,11 +49,17 @@ window.view = {
     const copyBtn = document.querySelector('.copy')
     copyBtn.innerHTML = dpi('1110011100111010000100111')
     copyBtn.onclick = () => {
-      navigator.clipboard.writeText(this.url).then(() =>{
-        alert('URL copied')
-      }, function() {
-        alert('copy error')
-      })
+      // navigator.clipboard.writeText(this.url).then(() =>{
+      //   alert('URL copied')
+      // }, function() {
+      //   alert('copy error')
+      // })
+      const textarea = document.createElement('textarea')
+      textarea.value = this.url
+      document.body.appendChild(textarea)
+      textarea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textarea)
     }
   
     const refreshBtn = document.querySelector('.refresh')
