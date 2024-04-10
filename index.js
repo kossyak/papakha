@@ -32,7 +32,7 @@ window.view = {
     clearBtn.innerHTML = dpi('0111000000011100111001110')
     clearBtn.onclick = () => {
       if (confirm('Are you sure you want to clear code and discard the current changes?')) {
-        this.update()
+        this.update('')
       }
     }
     
@@ -49,17 +49,13 @@ window.view = {
     const copyBtn = document.querySelector('.copy')
     copyBtn.innerHTML = dpi('1110011100111010000100111')
     copyBtn.onclick = () => {
-      // navigator.clipboard.writeText(this.url).then(() =>{
-      //   alert('URL copied')
-      // }, function() {
-      //   alert('copy error')
-      // })
       const textarea = document.createElement('textarea')
       textarea.value = this.url
       document.body.appendChild(textarea)
       textarea.select()
       document.execCommand('copy')
       document.body.removeChild(textarea)
+      alert('URL copied')
     }
   
     const refreshBtn = document.querySelector('.refresh')
