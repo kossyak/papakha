@@ -18,7 +18,7 @@ window.view = {
   },
   refresh() {
     this.resultContainer.srcdoc = `
-        <script src="https://cdn.jsdelivr.net/gh/lestajs/core@latest/dist/lesta.mount.global.prod.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/lestajs/core@latest/dist/lesta.global.prod.js"></script>
         <style>
             body {
                 font-family: Arial;
