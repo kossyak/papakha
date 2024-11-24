@@ -1,6 +1,5 @@
 import control from './control'
 import { compress, decompress } from './utils'
-import dpi from './utils/dpi.js'
 
 window.view = {
   code: decompress(window.location.pathname.slice(1)) || '',
@@ -29,7 +28,7 @@ window.view = {
   },
   create(code) {
     const clearBtn = document.querySelector('.clear')
-    clearBtn.innerHTML = dpi('0111000000011100111001110')
+    clearBtn.innerHTML = 'Clear' // dpi('0111000000011100111001110')
     clearBtn.onclick = () => {
       if (confirm('Are you sure you want to clear code and discard the current changes?')) {
         this.update('')
@@ -38,7 +37,7 @@ window.view = {
     
     const resetBtn = document.querySelector('.reset')
     localStorage.setItem('code', this.code)
-    resetBtn.innerHTML = dpi('1110010000101111000011100')
+    resetBtn.innerHTML = 'Reset' // dpi('1110010000101111000011100')
     resetBtn.onclick = () => {
       if (confirm('Are you sure you want to restore the original source code and discard the current changes?')) {
         const code = localStorage.getItem('code')
@@ -47,7 +46,7 @@ window.view = {
     }
     
     const copyBtn = document.querySelector('.copy')
-    copyBtn.innerHTML = dpi('1110011100111010000100111')
+    copyBtn.innerHTML = 'Copy' // dpi('1110011100111010000100111')
     copyBtn.onclick = () => {
       const textarea = document.createElement('textarea')
       textarea.value = this.url
@@ -59,7 +58,7 @@ window.view = {
     }
   
     const refreshBtn = document.querySelector('.refresh')
-    refreshBtn.innerHTML = dpi('0000011101100011011100000')
+    refreshBtn.innerHTML = 'Refresh' // dpi('0000011101100011011100000')
     refreshBtn.onclick = () => this.refresh()
     
     control.create()

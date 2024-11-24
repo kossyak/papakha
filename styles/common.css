@@ -58,6 +58,9 @@ button[hidden] {
     cursor: pointer;
     gap: 8px;
 }
+.header button:hover {
+    background-color: #00000010;
+}
 
 .header svg {
     width: 14px;
