@@ -85,6 +85,7 @@ window.view = {
       const compressed = compress(this.code)
       this.url = 'https://papakha.lesta.dev/' + compressed
       history.pushState(null, null, '/' + compressed)
+      if (this.url.length > 2000) alert(`Your code is compressed and URL-encoded with ${this.url.length} characters. The maximum allowed length is 2000 characters.`)
       try {
         this.onchange?.(this.code)
         this.refresh()
