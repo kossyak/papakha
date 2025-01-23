@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 26.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-	<polygon points="50,25 25,25 25,50 0,50 0,75 0,100 25,100 50,100 75,100 75,75 75,50 75,25 	"/>
-	<path d="M74,26v24v25v24H50H25H1V75V51h24h1v-1V26h24H74 M75,25H50H25v25H0v25v25h25h25h25V75V50V25L75,25z"/>
-	<path d="M74,1v98H50H26V1h24H74 M75,0H50H25v100h25h25V0L75,0z"/>
-	<path d="M99,26v23H26V26H99 M100,25H25v25h75V25L100,25z"/>
-</svg>

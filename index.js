@@ -1,5 +1,6 @@
 import control from './control'
 import { compress, decompress } from './utils'
+import { debounce } from './utils/debounce'
 
 window.view = {
   code: decompress(window.location.pathname.slice(1)) || '',
@@ -12,15 +13,11 @@ window.view = {
   update(code) {
     this._editor.setValue(code ?? this.code)
   },
-  notify(v) {
-    console.log(v)
-  },
   refresh() {
     this.resultContainer.srcdoc = `
-        <script src="https://cdn.jsdelivr.net/gh/lestajs/core@latest/dist/lesta.global.prod.js"></script>
         <style>
-            body {
-                font-family: Arial;
+            body, button, input {
+                font-family: 'Verdana';
                 font-size: 14px;
             }
         </style>
@@ -28,25 +25,13 @@ window.view = {
   },
   create(code) {
     const clearBtn = document.querySelector('.clear')
-    clearBtn.innerHTML = 'Clear' // dpi('0111000000011100111001110')
     clearBtn.onclick = () => {
-      if (confirm('Are you sure you want to clear code and discard the current changes?')) {
+      if (confirm('Are you sure you want to clear code?')) {
         this.update('')
       }
     }
     
-    const resetBtn = document.querySelector('.reset')
-    localStorage.setItem('code', this.code)
-    resetBtn.innerHTML = 'Reset' // dpi('1110010000101111000011100')
-    resetBtn.onclick = () => {
-      if (confirm('Are you sure you want to restore the original source code and discard the current changes?')) {
-        const code = localStorage.getItem('code')
-        code && this.update(code)
-      }
-    }
-    
     const copyBtn = document.querySelector('.copy')
-    copyBtn.innerHTML = 'Copy' // dpi('1110011100111010000100111')
     copyBtn.onclick = () => {
       const textarea = document.createElement('textarea')
       textarea.value = this.url
@@ -56,10 +41,6 @@ window.view = {
       document.body.removeChild(textarea)
       alert('URL copied')
     }
-  
-    const refreshBtn = document.querySelector('.refresh')
-    refreshBtn.innerHTML = 'Refresh' // dpi('0000011101100011011100000')
-    refreshBtn.onclick = () => this.refresh()
     
     control.create()
     if (code) this.code = code
@@ -80,8 +61,7 @@ window.view = {
         statementIndent: 2
       }
     })
-    this._editor.on('changes', () => {
-      this.code = this._editor.getValue()
+    const d = debounce(() => {
       const compressed = compress(this.code)
       this.url = 'https://papakha.lesta.dev/' + compressed
       history.pushState(null, null, '/' + compressed)
@@ -89,10 +69,13 @@ window.view = {
       try {
         this.onchange?.(this.code)
         this.refresh()
-        // new Function('csm', 'result', this.code)('csm', this.result)
       } catch (err) {
         console.log(err)
       }
+    }, 800)
+    this._editor.on('changes', () => {
+      this.code = this._editor.getValue()
+      d()
     })
     const lineCount = this._editor.lineCount();
     this._editor.setCursor({ line: lineCount - 1, ch: 2 })

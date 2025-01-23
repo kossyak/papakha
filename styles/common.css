@@ -5,7 +5,7 @@ body {
     margin: 0;
     font-size: 13px;
     max-height: 100vh;
-    font-family: Arial;
+    font-family: sans-serif;
 }
 *, :before, :after {
     box-sizing: border-box;
@@ -63,7 +63,11 @@ button[hidden] {
 }
 
 .header svg {
-    width: 14px;
+    width: 15px;
+    fill: #212121;
+}
+
+.buttons svg {
     fill: #c4c4c4;
 }
 
@@ -86,10 +90,10 @@ button[hidden] {
     outline: 1px solid #00000020;
 }
 
-#container[direction="row"] {
+#container[direction="rows"] {
     flex-direction: row;
 }
-#container[direction="col"] {
+#container[direction="columns"] {
     flex-direction: column;
 }
 
@@ -123,9 +127,7 @@ button[hidden] {
 #view-control .active svg {
     fill: #212121;
 }
-.header button:hover svg {
-    fill: #a0a0a0;
-}
+
 .header button:active svg {
     fill: #212121;
 }
