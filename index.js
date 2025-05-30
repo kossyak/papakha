@@ -72,7 +72,7 @@ window.view = {
       } catch (err) {
         console.log(err)
       }
-    }, 800)
+    }, 300)
     this._editor.on('changes', () => {
       this.code = this._editor.getValue()
       d()
